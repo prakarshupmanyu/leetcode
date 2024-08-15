@@ -116,5 +116,4 @@ def myAtoi(s: str) -> int:
 
 
 if __name__ == "__main__":
-    print("hello")
-    print(myAtoi("123"))
+    print(myAtoi("12as3"))

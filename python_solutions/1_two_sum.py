@@ -36,11 +36,14 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 from typing import List
 
 
-class Solution:
-    def two_sum(self, nums: List[int], target: int) -> List[int]:
-        numbers_to_idx = {}
-        for i, n in enumerate(nums):
-            if target - n in numbers_to_idx:
-                return [numbers_to_idx[target-n], i]
-            numbers_to_idx[n] = i
-        return []
+def two_sum(nums: List[int], target: int) -> List[int]:
+    numbers_to_idx = {}
+    for i, n in enumerate(nums):
+        if target - n in numbers_to_idx:
+            return [numbers_to_idx[target-n], i]
+        numbers_to_idx[n] = i
+    return []
+
+
+if __name__ == "__main__":
+    print(two_sum([1,2,3,4,5,6,7,8,9,0,9,8,7,6,5,4,3,2,1], 17))

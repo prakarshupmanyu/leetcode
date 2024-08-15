@@ -33,35 +33,48 @@ class ListNode:
         self.next = next
 
 
-class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        result: ListNode = ListNode()
-        curr_node = result
+def addTwoNumbers(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    result: ListNode = ListNode()
+    curr_node = result
 
-        carry = 0
-        while l1 is not None and l2 is not None:
-            node_sum = l1.val + l2.val + carry
-            curr_node.val = node_sum % 10
-            curr_node.next = ListNode()
-            prev = curr_node
-            curr_node = curr_node.next
-            l1 = l1.next
-            l2 = l2.next
-            carry = 1 if node_sum > 9 else 0
+    carry = 0
+    while l1 is not None and l2 is not None:
+        node_sum = l1.val + l2.val + carry
+        curr_node.val = node_sum % 10
+        curr_node.next = ListNode()
+        prev = curr_node
+        curr_node = curr_node.next
+        l1 = l1.next
+        l2 = l2.next
+        carry = 1 if node_sum > 9 else 0
 
-        l: ListNode = l1 if l1 else l2
+    l: ListNode = l1 if l1 else l2
 
-        while l is not None:
-            node_sum = l.val + carry
-            carry = 1 if node_sum > 9 else 0
-            curr_node.val = node_sum % 10
-            curr_node.next = ListNode()
-            prev = curr_node
-            curr_node = curr_node.next
-            l: ListNode = l.next
+    while l is not None:
+        node_sum = l.val + carry
+        carry = 1 if node_sum > 9 else 0
+        curr_node.val = node_sum % 10
+        curr_node.next = ListNode()
+        prev = curr_node
+        curr_node = curr_node.next
+        l: ListNode = l.next
 
-        if carry > 0:
-            curr_node.val = carry
-            prev = curr_node
-        prev.next = None
-        return result
+    if carry > 0:
+        curr_node.val = carry
+        prev = curr_node
+    prev.next = None
+    return result
+
+
+if __name__ == "__main__":
+    l11 = ListNode(2)
+    l12 = ListNode(3)
+    l11.next = l12
+    l21 = ListNode(1)
+    l22 = ListNode(2)
+    l21.next = l22
+    lsum = addTwoNumbers(l11, l21)
+    curr = lsum
+    while curr:
+        print(curr.val, "->")
+        curr = curr.next

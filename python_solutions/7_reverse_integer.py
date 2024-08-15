@@ -39,5 +39,4 @@ def reverse(x: int) -> int:
 
 
 if __name__ == "__main__":
-    print("hello")
     print(reverse(123))

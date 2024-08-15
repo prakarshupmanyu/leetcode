@@ -1,7 +1,8 @@
 """
 https://leetcode.com/problems/search-insert-position/description/
 
-Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return
+the index where it would be if it were inserted in order.
 
 You must write an algorithm with O(log n) runtime complexity.
 
@@ -33,7 +34,7 @@ from typing import List
 
 def search_insert_on(nums: List[int], target: int) -> int:
     for i, val in enumerate(nums):
-        if target <= nums[i]:
+        if target <= val:
             return i
     return len(nums)
 
@@ -55,4 +56,4 @@ def search_insert_ologn(nums: List[int], target: int) -> int:
 
 
 if __name__ == "__main__":
-    print(search_insert_ologn([1, 3, 5, 6], 7))
+    print(search_insert_ologn([1, 3, 5, 6], 4))

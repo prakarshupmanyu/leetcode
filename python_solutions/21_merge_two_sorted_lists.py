@@ -32,28 +32,41 @@ class ListNode:
         self.next = next
 
 
-class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        if not (list1 or list2):
-            return None
+def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    if not (list1 or list2):
+        return None
 
-        result: ListNode = ListNode()
-        prev = curr = result
-        while list1 or list2:
-            if list1 and list2 and list1.val < list2.val:
-                curr.val = list1.val
-                list1 = list1.next
-            elif list1 and list2 and list1.val >= list2.val:
-                curr.val = list2.val
-                list2 = list2.next
-            elif list1:
-                curr.val = list1.val
-                list1 = list1.next
-            elif list2:
-                curr.val = list2.val
-                list2 = list2.next
-            curr.next = ListNode()
-            prev = curr
-            curr = curr.next
-        prev.next = None
-        return result
+    result: ListNode = ListNode()
+    prev = curr = result
+    while list1 or list2:
+        if list1 and list2 and list1.val < list2.val:
+            curr.val = list1.val
+            list1 = list1.next
+        elif list1 and list2 and list1.val >= list2.val:
+            curr.val = list2.val
+            list2 = list2.next
+        elif list1:
+            curr.val = list1.val
+            list1 = list1.next
+        elif list2:
+            curr.val = list2.val
+            list2 = list2.next
+        curr.next = ListNode()
+        prev = curr
+        curr = curr.next
+    prev.next = None
+    return result
+
+
+if __name__ == "__main__":
+    l11 = ListNode(2)
+    l12 = ListNode(3)
+    l11.next = l12
+    l21 = ListNode(1)
+    l22 = ListNode(2)
+    l21.next = l22
+    lsum = mergeTwoLists(l11, l21)
+    curr = lsum
+    while curr:
+        print(curr.val, "->")
+        curr = curr.next
