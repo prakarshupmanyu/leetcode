@@ -46,6 +46,6 @@ def sorted_colors(nums):
 
 
 if __name__ == "__main__":
-    nums = [2,2,2,2,1,1,0,0,0]
+    nums = [2, 2, 2, 2, 1, 1, 0, 0, 0]
     print(sorted_colors(nums))
 
